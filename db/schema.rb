@@ -16,6 +16,10 @@ ActiveRecord::Schema.define(version: 2021_10_22_082610) do
   enable_extension "plpgsql"
 
   create_table "suppliers", force: :cascade do |t|
+    t.integer "ucode"
+    t.string "company_name"
+    t.integer "company_contact_number"
+    t.text "company_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
