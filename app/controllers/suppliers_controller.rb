@@ -4,6 +4,9 @@ class SuppliersController < ApplicationController
   # GET /suppliers or /suppliers.json
   def index
     @suppliers = Supplier.all
+    byebug
+    # @products = @post.comments.create(comment_params)
+    @products = Product.all
   end
 
   # GET /suppliers/1 or /suppliers/1.json
@@ -13,6 +16,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers/new
   def new
     @supplier = Supplier.new
+    byebug
   end
 
   # GET /suppliers/1/edit
@@ -64,6 +68,6 @@ class SuppliersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def supplier_params
-      params.fetch(:supplier, {})
+      params.require(:supplier).permit(:ucode, :company_name, :company_contact_number, :company_address)
     end
 end

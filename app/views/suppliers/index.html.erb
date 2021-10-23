@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Ucode</th>
+      <th>Company name</th>
+      <th>Company contact number</th>
+      <th>Company address</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +16,10 @@
   <tbody>
     <% @suppliers.each do |supplier| %>
       <tr>
+        <td><%= supplier.ucode %></td>
+        <td><%= supplier.company_name %></td>
+        <td><%= supplier.company_contact_number %></td>
+        <td><%= supplier.company_address %></td>
         <td><%= link_to 'Show', supplier %></td>
         <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
         <td><%= link_to 'Destroy', supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
