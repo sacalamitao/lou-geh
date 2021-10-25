@@ -4,7 +4,6 @@ class SuppliersController < ApplicationController
   # GET /suppliers or /suppliers.json
   def index
     @suppliers = Supplier.all
-    byebug
     # @products = @post.comments.create(comment_params)
     @products = Product.all
   end
@@ -16,7 +15,6 @@ class SuppliersController < ApplicationController
   # GET /suppliers/new
   def new
     @supplier = Supplier.new
-    byebug
   end
 
   # GET /suppliers/1/edit
