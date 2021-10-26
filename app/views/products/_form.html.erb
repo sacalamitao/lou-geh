@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :barcode %>
-    <%= form.number_field :barcode %>
+    <%= form.number_field :barcode, class: "border-0", value: rand(5000000000-999999999), :readonly => true%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :cost %>
-    <%= form.number_field :cost %>
+    <%= form.number_field :cost, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :supplier_id %>
-    <%= form.text_field :supplier_id, id: :product_supplier_id, value: @supplier.id %>
+    <%= form.text_field :supplier_id, id: :product_supplier_id, value: @supplier.id,type: :hidden %>
   </div>
 
-  <div class="actions">
+  <div class="actions btn btn-secondary btn-lg btn-block">
     <%= form.submit %>
   </div>
 <% end %>

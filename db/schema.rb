@@ -23,15 +23,6 @@ ActiveRecord::Schema.define(version: 2021_10_23_051350) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "customers_products", force: :cascade do |t|
-    t.bigint "product_id", null: false
-    t.bigint "customer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_customers_products_on_customer_id"
-    t.index ["product_id"], name: "index_customers_products_on_product_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.integer "barcode"
     t.string "description"
@@ -55,14 +46,13 @@ ActiveRecord::Schema.define(version: 2021_10_23_051350) do
   create_table "transactions", force: :cascade do |t|
     t.integer "quantity"
     t.integer "unit_price"
+    t.integer "product_barcode"
     t.bigint "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_transactions_on_customer_id"
   end
 
-  add_foreign_key "customers_products", "customers"
-  add_foreign_key "customers_products", "products"
   add_foreign_key "products", "suppliers"
   add_foreign_key "transactions", "customers"
 end

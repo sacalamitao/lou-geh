@@ -2,5 +2,5 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', supplier_products_path %> |
-<%= link_to 'Back', supplier_path(params[:supplier_id]) %>
+<%= link_to 'Show', supplier_products_path, class: "btn btn-secondary btn-lg btn-block" %> |
+<%= link_to 'Back', supplier_path(params[:supplier_id]), class: "btn btn-secondary btn-lg btn-block" %>

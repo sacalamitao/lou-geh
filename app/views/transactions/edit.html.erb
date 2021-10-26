@@ -2,5 +2,5 @@
 
 <%= render 'form', transaction: @transaction %>
 
-<%= link_to 'Show', @transaction %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Show', customer_transactions_path, class: "btn btn-secondary btn-lg btn-block" %> |
+<%= link_to 'Back', customer_path(params[:customer_id]), class: "btn btn-secondary btn-lg btn-block" %>

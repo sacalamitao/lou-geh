@@ -1,55 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Ucode:</strong>
+  <strong class="text-center">Ucode:</strong>
   <%= @supplier.ucode %>
 </p>
 
-<p>
+<p class="text-center">
   <strong>Company name:</strong>
   <%= @supplier.company_name %>
 </p>
-
-<p>
-  <strong>Company contact number:</strong>
-  <%= @supplier.company_contact_number %>
-</p>
-
-<p>
-  <strong>Company address:</strong>
-  <%= @supplier.company_address %>
-</p>
-
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>
 
 
 
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1 class="text-center">Products</h1>
 
-<table>
+<table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th>Barcode</th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Cost</th>
-      <th>Supplier</th>
+      <th scope="col">Barcode</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Supplier</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @supplier.products.each do |product| %>
-      <tr>
+      <tr scope="row">
         <td><%= product.barcode %></td>
         <td><%= product.description %></td>
         <td><%= product.quantity %></td>
         <td><%= product.cost %></td>
         <td><%= product.supplier_id %></td>
-        <td><%= link_to 'Show', supplier_products_path(@supplier, product) %></td>
         <td><%= link_to 'Edit', edit_supplier_product_path(@supplier, product) %></td>
         <td><%= link_to 'Destroy', supplier_product_path(@supplier, product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -59,5 +45,6 @@
 
 <br>
 
-<%= link_to 'New Product', new_supplier_product_path(@supplier) %>
+<%= link_to 'New Product', new_supplier_product_path(@supplier), class: "btn btn-secondary btn-lg btn-block" %> |
+<%= link_to 'Back', suppliers_path, class: "btn btn-secondary btn-lg btn-block" %>
 

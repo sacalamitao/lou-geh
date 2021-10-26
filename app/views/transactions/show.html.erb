@@ -11,9 +11,9 @@
 </p>
 
 <p>
-  <strong>Customer:</strong>
+  <strong>Customer_id</strong>
   <%= @transaction.customer_id %>
 </p>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Edit', edit_customer_transaction_path(@transaction) %> |
+<%= link_to 'Back', customer_transactions_path(@customer) %>

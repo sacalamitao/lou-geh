@@ -1,19 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+
 
 <p>
-  <strong>Address:</strong>
+  <strong class="text-center">Address:</strong>
   <%= @customer.address %>
 </p>
 
 <p>
-  <strong>Contact number:</strong>
-  <%= @customer.contact_number %>
+  <strong class="text-center">Name:</strong>
+  <%= @customer.name %>
 </p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+
+<h1 class="text-center">Transactions</h1>
+
+
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer.transactions.each do |transaction| %>
+      <tr scope="row">
+        <td><%= transaction.quantity %></td>
+        <td><%= transaction.unit_price %></td>
+        <td><%= link_to 'Edit', edit_customer_transaction_path(@customer, transaction) %></td>
+        <td><%= link_to 'Destroy', customer_transaction_path(@customer, transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_customer_transaction_path(@customer), class: "btn btn-secondary btn-lg btn-block" %> |
+<%= link_to 'Back', customers_path, class: "btn btn-secondary btn-lg btn-block" %>

@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[ show edit update destroy ]
+  before_action :set_customer
 
   # GET /transactions or /transactions.json
   def index
@@ -25,7 +26,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: "Transaction was successfully created." }
+        format.html { redirect_to customer_path(params[:customer_id]), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class TransactionsController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: "Transaction was successfully updated." }
+        format.html { redirect_to customer_path(params[:customer_id]), notice: "Transaction was successfully updated." }
         format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +52,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: "Transaction was successfully destroyed." }
+      format.html { redirect_to customer_path(params[:customer_id]), notice: "Transaction was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -62,8 +63,13 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.find(params[:id])
     end
 
+
+    def set_customer
+      @customer = Customer.find(params[:customer_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:quantity, :unit_price, :customer_id)
+      params.require(:transaction).permit(:quantity, :unit_price, :product_barcode, :customer_id)
     end
 end
